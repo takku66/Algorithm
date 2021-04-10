@@ -14,8 +14,11 @@ interface OnlineJudge {
     	sc.close();
     }
     abstract void execute(Scanner sc);
-    public default int next() {
+    public default int nexti() {
     	return Integer.parseInt(sc.next());
+    }
+    public default String nexts() {
+    	return sc.next();
     }
 }
 
