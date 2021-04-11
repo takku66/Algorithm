@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args){
-        OnlineJudge pgm = new ALDS1_2_B();
+        OnlineJudge pgm = new ALDS1_2_C();
         pgm.execute();
     }
 }
@@ -29,7 +29,7 @@ interface OnlineJudge {
 
 
 
-class ALDS1_2_B implements OnlineJudge{
+class ALDS1_2_C implements OnlineJudge{
     public void execute(Scanner sc){
     	int max = next();
     	String[] array1 = new String[max];
