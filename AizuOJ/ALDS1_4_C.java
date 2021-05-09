@@ -1,9 +1,10 @@
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main{
     public static void main(String[] args){
-        OnlineJudge pgm = new ALDS1_4_A();
+        OnlineJudge pgm = new ALDS1_4_C();
         pgm.execute();
     }
 }
@@ -27,35 +28,23 @@ interface OnlineJudge {
     }
 }
 
-class ALDS1_4_A implements OnlineJudge{
+class ALDS1_4_C implements OnlineJudge{
 
     public void execute(Scanner sc){
     	int n = nexti();
-    	int[] s = new int[n+1];
+    	Set<String> set = new HashSet<String>();
     	for(int i = 0; i < n; i++) {
-    		s[i] =  nexti();
+    		String c = nexts();
+    		if(c.charAt(0) == 'i') {
+    			set.add(nexts());
+    		}else {
+    			if(set.contains(nexts())) {
+    				System.out.println("yes");
+    			}else {
+    				System.out.println("no");
+    			}
+    		}
     	}
-    	int q = nexti();
-    	int dup = 0;
-    	while(q > 0) {
-    		s[n] = nexti();
-    		dup += linearSrch(s, s[n]) == -1 ? 0 : 1;
-    		q--;
-    	}
-    	System.out.println(dup);
 
     }
-    public int linearSrch(int[] ary, int target) {
-    	int i = 0;
-    	while(ary[i] != target) {
-    		i++;
-    	}
-    	if(i >= ary.length-1) {
-    		return -1;
-    	}else {
-    		return i;
-    	}
-    }
-
 }
-

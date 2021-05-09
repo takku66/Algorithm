@@ -31,8 +31,40 @@ interface OnlineJudge {
 class ALDS1_4_D implements OnlineJudge{
 
 	public void execute(MyScanner sc){
-		
+		int n = nexti();
+		int k = nexti();
+		int[] ary = new int[n];
+		int sum = 0;
+		int max = 0;
+		for(int i = 0; i < n; i++) {
+			ary[i] = nexti();
+			sum += ary[i];
+			if(max < ary[i]) {
+				max = ary[i];
+			}
+		}
+		int r = (int)Math.ceil((double)sum/k);
+		if(r < max) {
+			r = max;
+		}
+		while(!doTest(ary,k, r)) {
+			r++;
+		}
+		System.out.println(r);
 	}
+
+	private boolean doTest(int[] ary, int k, int maxnum) {
+		int tmp = 0;
+		for(int i = 0, ilen = ary.length; i < ilen && k > 0; i++) {
+			tmp += ary[i];
+			if(tmp > maxnum) {
+				tmp = ary[i];
+				k--;
+			}
+		}
+		return k > 0 ? true : false;
+	}
+
 }
 
 
